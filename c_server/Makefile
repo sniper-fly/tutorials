@@ -1,6 +1,6 @@
 # $(NAME) = a.out
 SERVER = socket_server.cpp
-CLIENT = socket_client.cpp
+CLIENT = socket_client.cpp recv_line.cpp
 CXX = clang++
 CXXFLAGS = -std=c++98
 
