@@ -21,6 +21,6 @@ int RecvLine(int iSocket, char* szBuf, int iLen) {
             return -1;
         }
     }
-    szBuf[iIdx - 2] == NULL;
+    szBuf[iIdx - 2] = '\0';
     return true;
 }
