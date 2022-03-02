@@ -1,5 +1,5 @@
 # $(NAME) = a.out
-SERVER = socket_server.cpp
+SERVER = socket_server.cpp recv_line.cpp
 CLIENT = socket_client.cpp recv_line.cpp
 CXX = clang++
 CXXFLAGS = -std=c++98
