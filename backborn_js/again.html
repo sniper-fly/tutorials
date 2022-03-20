@@ -10,7 +10,16 @@
   <!-- Your HTML -->
   <!-- ========= -->
 
-  <div id="container">Loading...</div>
+  <section id="todoapp">
+    <header id="header">
+      <h1>Todos</h1>
+      <div id="container"></div>
+      <input id="new-todo" placeholder="What needs to be done?">
+    </header>
+    <section id="main">
+      <ul id="todo-list"></ul>
+    </section>
+  </section>
 
   <!-- ========= -->
   <!-- Libraries -->
@@ -23,19 +32,75 @@
   <!-- =============== -->
   <!-- Javascript code -->
   <!-- =============== -->
+  <script type="text/template" id="item-template">
+    <div class="view">
+      <input class="toggle" type="checkbox">
+      <label><%- title %></label>
+    </div>
+  </script>
+
   <script type="text/javascript">
-    let AppView = Backbone.View.extend({
-      el: '#container',
-      template: _.template("<h3>hello <%= hoge %>,<%= fuga %></h3>"),
-      initialize: function(){
-        this.render();
-      },
-      render: function(){
-        this.$el.html(this.template({hoge: 'world!', fuga: 'haha'}));
+    let app = {};
+
+    app.Todo = Backbone.Model.extend({
+      defaults: {
+        title: '',
+        completed: false
       }
     });
 
-    let appView = new AppView();
+    app.TodoList = Backbone.Collection.extend({
+      model: app.Todo,
+      localStorage: new Store("backbone-todo")
+    });
+
+    app.AppView = Backbone.View.extend({
+      el: '#todoapp',
+      initialize: function(){
+        this.input = this.$('new-todo');
+        app.todoList = new app.TodoList();
+        app.todoList.on('add', this.addOne, this);
+        app.todoList.on('reset', this.addAll, this);
+        app.todoList.fetch();
+      },
+      events: {
+        'keypress #new-todo': 'createTodoOnEnter'
+      },
+      createTodoOnEnter: function(e){
+        if (e.which !== 13 || !this.input.val().trim()) {
+          return;
+        }
+        app.todoList.create(this.newAttributes());
+        this.input.val('');
+      },
+      addOne: function(todo){
+        let view = new app.TodoView({model: todo});
+        $('#todo-list').append(view.render().el);
+      },
+      addAll: function(todo){
+        this.$('#todo-list').html('');
+        app.todoList.each(this.addOne, this);
+      },
+      newAttributes: function(){
+        return {
+          title: this.input.val().trim(),
+          completed: false
+        }
+      }
+    });
+
+    app.TodoView = Backbone.View.extend({
+      tagName: 'li',
+      template: _.template($('#item-template').html()),
+      render: function(){
+        this.$el.html(this.template(this.model.toJSON()));
+        return this;
+      }
+    });
+
+    app.todoList = new app.TodoList();
+    app.todoView = new app.TodoView();
+    app.appView = new app.AppView();
   </script>
   
 </body>
