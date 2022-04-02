@@ -66,11 +66,41 @@ export const LinkMutation = extendType({
             },
             resolve(parent, args, context) {
                 const { id, description, url } = args;
-                let link = links.find(
+                const link = links.find(
                         e => e["id"] == id
                 ) as NexusGenObjects["Link"];
                 link["description"] = description || link["description"];
                 link["url"] = url || link["url"];
+                return link;
+            }
+        });
+
+        t.nonNull.field("GetLink", {
+            type: "Link",
+            args: {
+                id: nonNull(intArg()),
+            },
+            resolve(parent, args, context) {
+                const { id } = args;
+                const link = links.find(
+                        e => e["id"] == id
+                ) as NexusGenObjects["Link"];
+                return link;
+            }
+        });
+
+        t.nonNull.field("DeleteLink", {
+            type: "Link",
+            args: {
+                id: nonNull(intArg()),
+            },
+            resolve(parent, args, context) {
+                const { id } = args;
+                const idx:number = links.findIndex(e => e["id"] == id);
+                const link:NexusGenObjects["Link"] = links[idx];
+                if (idx != -1) {
+                    links.splice(idx, 1);
+                }
                 return link;
             }
         });

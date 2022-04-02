@@ -9,6 +9,8 @@ type Link {
 }
 
 type Mutation {
+  DeleteLink(id: Int!): Link!
+  GetLink(id: Int!): Link!
   post(description: String!, url: String!): Link!
   updateLink(description: String, id: Int!, url: String): Link!
 }
