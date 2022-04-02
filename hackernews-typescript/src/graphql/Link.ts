@@ -67,8 +67,8 @@ export const LinkMutation = extendType({
             resolve(parent, args, context) {
                 const { id, description, url } = args;
                 let link = links.find(
-                    e => e["description"] == description
-                    ) as NexusGenObjects["Link"];
+                        e => e["id"] == id
+                ) as NexusGenObjects["Link"];
                 link["description"] = description || link["description"];
                 link["url"] = url || link["url"];
                 return link;
