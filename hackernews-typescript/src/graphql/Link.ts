@@ -32,6 +32,17 @@ export const LinkQuery = extendType({
         return links;
       }
     });
+    t.field("link", {
+      type: "Link",
+      args: {
+        id: nonNull(intArg()),
+      },
+      resolve(parent, args, context) {
+        const { id } = args;
+        const link = links.find(e => e.id == id);
+        return link ?? null;
+      }
+    });
   }
 });
 
@@ -44,10 +55,8 @@ export const LinkMutation = extendType({
         description: nonNull(stringArg()),
         url: nonNull(stringArg()),
       },
-
       resolve(parent, args, context) {
         const { description, url } = args;
-
         let idCount = links.length + 1;
         const link = {
           id: idCount,
@@ -58,29 +67,35 @@ export const LinkMutation = extendType({
         return link;
       }
     })
-  },
-});
 
-export const LinkByID = extendType({
-  type: "Query",
-  definition(t) {
-    t.field("link", {
+    t.field("updateLink", {
+      type: "Link",
+      args: {
+        id: nonNull(intArg()),
+        url: stringArg(),
+        description: stringArg()
+      },
+      resolve(parent, args, context) {
+        const { id, url, description } = args;
+        const idx = links.findIndex(link => link.id === id);
+        links[idx].url = url ?? links[idx].url;
+        links[idx].description = url ?? links[idx].description;
+        return links[idx];
+      }
+    });
+
+    t.field("deleteLink", {
       type: "Link",
       args: {
         id: nonNull(intArg()),
       },
       resolve(parent, args, context) {
         const { id } = args;
-        const link = links.find(e => e.id == id);
+        const link = links.find(link => link.id === id);
+        const idx = links.findIndex(link => link.id === id);
+        links.splice(idx, 1);
         return link ?? null;
       }
-    })
-  }
-})
-
-// export const updateLink = extendType({
-//   type: "Mutation",
-//   definition(t) {
-//     t.
-//   }
-// })
+    });
+  },
+});
