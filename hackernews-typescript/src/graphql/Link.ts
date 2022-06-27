@@ -27,26 +27,26 @@ export const Link = objectType({
   }
 });
 
-let links: NexusGenObjects["Link"][] = [
-  {
-        id: 1,
-        url: "www.howtographql.com",
-        description: "Fullstack tutorial for GraphQL",
-    },
-    {
-        id: 2,
-        url: "graphql.org",
-        description: "GraphQL official website",
-    },
-];
-
 export const LinkQuery = extendType({
   type: "Query",
   definition(t) {
     t.nonNull.list.nonNull.field("feed", {
       type: "Link",
+      args: {
+        filter: stringArg(),
+      },
       resolve(parent, args, context, info) {
-        return context.prisma.link.findMany();
+        const where = args.filter
+          ? {
+              OR: [
+                { description: { contains: args.filter } },
+                { url: { contains: args.filter } },
+              ],
+          }
+          : {};
+        return context.prisma.link.findMany({
+          where,
+        });
       }
     });
   }
