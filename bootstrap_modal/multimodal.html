@@ -13,17 +13,34 @@
   </head>
 
   <body>
-    <!-- Button trigger modal -->
     <button
       type="button"
       class="btn btn-primary"
       data-toggle="modal"
       data-target="#exampleModal"
+      data-whatever="@mdo"
     >
-      Launch demo modal
+      Open modal for @mdo
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-toggle="modal"
+      data-target="#exampleModal"
+      data-whatever="@fat"
+    >
+      Open modal for @fat
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      data-toggle="modal"
+      data-target="#exampleModal"
+      data-whatever="@getbootstrap"
+    >
+      Open modal for @getbootstrap
     </button>
 
-    <!-- Modal -->
     <div
       class="modal fade"
       id="exampleModal"
@@ -35,7 +52,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
             <button
               type="button"
               class="close"
@@ -45,7 +62,22 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">...</div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="recipient-name" class="col-form-label"
+                  >Recipient:</label
+                >
+                <input type="text" class="form-control" id="recipient-name" />
+              </div>
+              <div class="form-group">
+                <label for="message-text" class="col-form-label"
+                  >Message:</label
+                >
+                <textarea class="form-control" id="message-text"></textarea>
+              </div>
+            </form>
+          </div>
           <div class="modal-footer">
             <button
               type="button"
@@ -54,7 +86,7 @@
             >
               Close
             </button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary">Send message</button>
           </div>
         </div>
       </div>
@@ -77,10 +109,10 @@
       crossorigin="anonymous"
     ></script> -->
 
-
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> -->
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.bundle.min.js"></script>
+    <script src="multimodal.js"></script>
   </body>
 </html>
