@@ -1,5 +1,5 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
 
 type FeeClassification = {
   name: string;
@@ -7,19 +7,25 @@ type FeeClassification = {
   unitPrice: number;
   numOfPeople: number;
   totalPrice: number;
-}
+};
 
 type DetailProps = {
   classification: FeeClassification;
-}
+};
 
 class Detail extends React.Component<DetailProps, {}> {
   render() {
     return (
-      <div >
-        <div className="classification-name">{this.props.classification.name}</div>
-        <div className="description">{this.props.classification.description}</div>
-        <div className="unit-price">{this.props.classification.unitPrice}円</div>
+      <div>
+        <div className="classification-name">
+          {this.props.classification.name}
+        </div>
+        <div className="description">
+          {this.props.classification.description}
+        </div>
+        <div className="unit-price">
+          {this.props.classification.unitPrice}円
+        </div>
         <div className="num-people">
           <select value="0">
             <option value="0">0</option>
@@ -54,20 +60,55 @@ class Summary extends React.Component {
 }
 
 class AdmissionFeeCalculator extends React.Component {
-  private detail: DetailProps = {
-    classification: {
-      name: "大人",
-      description: "",
-      unitPrice: 1000,
-      numOfPeople: 0,
-      totalPrice: 0
-    }
-  }
+  private details: DetailProps[] = [
+    {
+      classification: {
+        name: "大人",
+        description: "",
+        unitPrice: 1000,
+        numOfPeople: 0,
+        totalPrice: 0,
+      },
+    },
+    {
+      classification: {
+        name: "学生",
+        description: "中学生・高校生",
+        unitPrice: 700,
+        numOfPeople: 0,
+        totalPrice: 0,
+      }
+    },
+    {
+      classification: {
+        name: "子ども",
+        description: "小学生",
+        unitPrice: 300,
+        numOfPeople: 0,
+        totalPrice: 0,
+      }
+    },
+    {
+      classification: {
+        name: "幼児",
+        description: "未就学",
+        unitPrice: 0,
+        numOfPeople: 0,
+        totalPrice: 0,
+      }
+    },
+  ];
 
   render() {
+    const detailsJsx = this.details.map((fc, idx) => {
+      return (
+        <Detail key={idx.toString()} classification={fc.classification} />
+      )
+    })
+
     return (
       <>
-        <Detail classification={this.detail.classification} />
+        {detailsJsx}
         <Summary />
       </>
     );
@@ -80,6 +121,6 @@ const App: React.FC = () => {
       <AdmissionFeeCalculator />
     </div>
   );
-}
+};
 
 export default App;
