@@ -13,7 +13,25 @@ type DetailProps = {
   classification: FeeClassification;
 };
 
-class Detail extends React.Component<DetailProps, {}> {
+type DetailState = {
+  numOfPeople: number;
+}
+
+class Detail extends React.Component<DetailProps, DetailState> {
+  constructor(props: DetailProps) {
+    super(props)
+    this.state = {
+      numOfPeople: props.classification.numOfPeople
+    }
+  }
+
+  onNumOfPeopleChange(e: React.ChangeEvent<HTMLSelectElement>): void {
+    const num: number = Number(e.target.value);
+    this.setState({
+      numOfPeople: num
+    })
+  }
+
   render() {
     return (
       <div>
@@ -27,7 +45,7 @@ class Detail extends React.Component<DetailProps, {}> {
           {this.props.classification.unitPrice}円
         </div>
         <div className="num-people">
-          <select value="0">
+          <select value={this.state.numOfPeople} onChange={e => this.onNumOfPeopleChange(e)}>
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
