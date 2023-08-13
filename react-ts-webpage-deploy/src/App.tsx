@@ -1,5 +1,10 @@
 import React from "react";
 import "./App.css";
+import {
+BrowserRouter as Router,
+Routes,
+Route,
+} from "react-router-dom";
 
 type FeeClassification = {
   name: string;
@@ -151,10 +156,17 @@ class AdmissionFeeCalculator extends React.Component<
   }
 }
 
+const NotFound: React.FC = () => <div> not found </div>
+
 const App: React.FC = () => {
   return (
     <div className="main">
-      <AdmissionFeeCalculator />
+      <Router>
+        <Routes>
+          <Route path="/" element={<AdmissionFeeCalculator />} />
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
+      </Router>
     </div>
   );
 };
