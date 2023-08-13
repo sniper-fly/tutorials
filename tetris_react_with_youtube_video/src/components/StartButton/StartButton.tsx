@@ -1,5 +1,5 @@
-import React from "react";
-import { StyledStartButton } from "./StartButton.styles";
+import React from 'react';
+import { StyledStartButton } from './StartButton.styles';
 
 type Props = {
   callback: () => void;
