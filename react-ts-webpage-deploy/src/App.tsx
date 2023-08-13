@@ -1,11 +1,8 @@
 import React from "react";
 import "./App.css";
-import {
-BrowserRouter as Router,
-Routes,
-Route,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
+import TodoList from "./components/Todo";
 
 type FeeClassification = {
   name: string;
@@ -24,19 +21,13 @@ const Detail: React.FC<DetailProps> = (props) => {
   const onNumOfPeopleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const num: number = Number(e.target.value);
     props.onNumOfPeopleChange(num);
-  }
+  };
 
   return (
     <div>
-      <div className="classification-name">
-        {props.classification.name}
-      </div>
-      <div className="description">
-        {props.classification.description}
-      </div>
-      <div className="unit-price">
-        {props.classification.unitPrice}円
-      </div>
+      <div className="classification-name">{props.classification.name}</div>
+      <div className="description">{props.classification.description}</div>
+      <div className="unit-price">{props.classification.unitPrice}円</div>
       <div className="num-people">
         <select
           value={props.classification.numOfPeople}
@@ -52,7 +43,7 @@ const Detail: React.FC<DetailProps> = (props) => {
       </div>
     </div>
   );
-}
+};
 
 type SummaryProps = {
   numOfPeople: number;
@@ -73,7 +64,7 @@ const Summary: React.FC<SummaryProps> = (props) => {
       </div>
     </div>
   );
-}
+};
 
 type AdmissionFeeCalculatorState = {
   feeClassifications: FeeClassification[];
@@ -157,7 +148,7 @@ class AdmissionFeeCalculator extends React.Component<
   }
 }
 
-const NotFound: React.FC = () => <div> not found </div>
+const NotFound: React.FC = () => <div> not found </div>;
 
 const App: React.FC = () => {
   return (
@@ -166,6 +157,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/fee_calc" element={<AdmissionFeeCalculator />} />
+          <Route path="/todo" element={<TodoList />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </Router>

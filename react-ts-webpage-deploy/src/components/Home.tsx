@@ -6,7 +6,9 @@ const Home: React.FC = () => (
     <Link to={{ pathname: "/fee_calc", search: "?query=apple" }}>
       入場料金計算ページ
     </Link>
+    <br/>
+    <Link to={{ pathname: "/todo" }}>TodoList</Link>
   </>
 );
 
-export default Home
+export default Home;
