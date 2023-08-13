@@ -5,6 +5,7 @@ BrowserRouter as Router,
 Routes,
 Route,
 } from "react-router-dom";
+import Home from "./components/Home";
 
 type FeeClassification = {
   name: string;
@@ -163,7 +164,8 @@ const App: React.FC = () => {
     <div className="main">
       <Router>
         <Routes>
-          <Route path="/" element={<AdmissionFeeCalculator />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/fee_calc" element={<AdmissionFeeCalculator />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </Router>
