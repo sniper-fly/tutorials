@@ -1,0 +1,28 @@
+#root {
+  text-align: center;
+}
+
+form {
+  margin-top: 50px;
+}
+
+input {
+  margin-bottom: 12px;
+  font-size: 14px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+button {
+  font-size: 17px;
+  font-weight: bolder;
+  color: white;
+  background-color: red;
+  height: 50px;
+  border: none;
+  border-radius: 12px;
+}
+
+input, button {
+  width: 300px;
+}

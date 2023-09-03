@@ -1,0 +1,85 @@
+button {
+  background-color: red;
+  border-style: none;
+  color: white;
+  display: block;
+  font-weight: bolder;
+  margin: 20px auto 20px auto;
+  padding: 10px;
+  width: 200px;
+}
+
+.avatar {
+  margin: auto auto 10px auto;
+}
+
+.background {
+  background-color: #e0f2db;
+  flex-flow: row wrap;
+  gap: 25px;
+  margin: auto;
+  padding: 25px;
+  width: 875px;
+}
+
+.flipCard {
+  background-color: transparent;
+  height: 450px;
+  perspective: 1000px;
+  width: 425px;
+}
+
+.flipCardBack {
+  justify-content: center;
+  flex-direction: column;
+  transform: rotateY(180deg);
+  text-align: center;
+}
+
+.flipCardFront {
+  flex-flow: column wrap;
+}
+
+.flipCardInner {
+  box-shadow: 0 2px 5px 2px lightgrey;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  width: 100%;
+}
+
+.flipCard:hover .flipCardInner {
+  transform: rotateY(180deg);
+}
+
+.name {
+  margin-left: 25px;
+}
+
+.title {
+  margin: 0 auto 40px 25px;
+}
+
+button, .flipCardFront, .flipCardInner{
+  border-radius: 10px;
+}
+
+.flipCardBack, .flipCardFront {
+  backface-visibility: hidden;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+}
+
+.flipCardFront, .flipCardInner {
+  background-color: white;
+}
+
+.avatar, .background, .flipCardBack, .flipCardFront {
+  display: flex;
+}
+
+button, .name, .title {
+  font-size: 17px;
+}

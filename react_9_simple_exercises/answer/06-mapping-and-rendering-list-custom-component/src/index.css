@@ -1,0 +1,25 @@
+.root-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-container {
+  width: 200px;
+  height: 60px;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 10px 20px;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.item-container:last-child {
+  border-bottom: 1px solid black;
+}
+
+.animal-name {
+  margin-left: 16px;
+}

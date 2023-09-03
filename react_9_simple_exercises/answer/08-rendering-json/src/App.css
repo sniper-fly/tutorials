@@ -1,0 +1,32 @@
+#root {
+  justify-content: center;
+}
+
+.background {
+  flex: 0 0 1000px;
+  background-color: #e9ffdb;
+  margin-top: 25px;
+  padding: 10px;
+}
+
+.card {
+  text-align: center;
+  flex-direction: column;
+  background-color: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px 2px darkgray;
+}
+
+.setup {
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+#root, .background, .card {
+  display: flex;
+}
+
+.card, .setup, .punchline{
+  margin: 15px;
+}
