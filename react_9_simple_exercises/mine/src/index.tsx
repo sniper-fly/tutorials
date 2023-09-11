@@ -1,20 +1,28 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import reportWebVitals from './reportWebVitals';
-import { Button } from './components/Button';
-import About from './components/About';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import reportWebVitals from "./reportWebVitals";
+import { Button } from "./components/Button";
+import { useState } from "react";
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+  document.getElementById("root") as HTMLElement
 );
+
+const App: React.FC = () => {
+  const [count, setCount] = React.useState(0);
+
+  return (
+    <>
+      <div>Button has been clicked {count} times.</div>
+      <Button onClick={() => setCount(count + 1)} />
+    </>
+  );
+};
+
 root.render(
   <React.StrictMode>
-    <Button number={1}/>
-    <Button number={2}/>
-    <Button number={3}/>
-
-    <About />
+    <App />
   </React.StrictMode>
 );
 

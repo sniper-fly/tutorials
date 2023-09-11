@@ -1,9 +1,9 @@
 type Props = {
-  number: number
+  onClick: () => void
 }
 
-export const Button: React.FC<Props> = ({number}) => {
-  return <button onClick={() => alert(`clicked! button ${number}`)}>
-    button {number}
+export const Button: React.FC<Props> = ({onClick}) => {
+  return <button onClick={onClick}>
+    Click me
   </button>
 }
