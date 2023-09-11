@@ -2,27 +2,20 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
-import { Button } from "./components/Button";
-import { useState } from "react";
+import { Animal } from "./components/Animal";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 
-const App: React.FC = () => {
-  const [count, setCount] = React.useState(0);
-
-  return (
-    <>
-      <div>Button has been clicked {count} times.</div>
-      <Button onClick={() => setCount(count + 1)} />
-    </>
-  );
-};
+const animals = ["dog", "cat", "chicken", "cow", "sheep", "horse"];
 
 root.render(
   <React.StrictMode>
-    <App />
+    {animals.map((animal, idx) => (
+      <Animal key={idx} animal={animal} />
+      // <li key={idx}>{animal}</li>
+    ))}
   </React.StrictMode>
 );
 
