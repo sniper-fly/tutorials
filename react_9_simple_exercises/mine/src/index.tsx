@@ -3,13 +3,18 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { Button } from './components/Button';
+import About from './components/About';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <Button/>
+    <Button number={1}/>
+    <Button number={2}/>
+    <Button number={3}/>
+
+    <About />
   </React.StrictMode>
 );
 

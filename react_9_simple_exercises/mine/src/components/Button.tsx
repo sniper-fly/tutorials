@@ -1,5 +1,9 @@
-export const Button: React.FC = () => {
-  return <button onClick={() => alert('clicked!')}>
-    Click Me
+type Props = {
+  number: number
+}
+
+export const Button: React.FC<Props> = ({number}) => {
+  return <button onClick={() => alert(`clicked! button ${number}`)}>
+    button {number}
   </button>
 }
