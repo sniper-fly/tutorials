@@ -1,9 +1,9 @@
-import Layout from '../../components/layout';
-import { getAllPostIds } from '../../lib/posts';
-import { getPostData } from '../../lib/posts';
-import Head from 'next/head';
-import Date from '../../components/date';
-import utilStyles from '../../styles/utils.module.css';
+import Layout from "../../components/layout";
+import { getAllPostIds } from "../../lib/posts";
+import { getPostData } from "../../lib/posts";
+import Head from "next/head";
+import Date from "../../components/date";
+import utilStyles from "../../styles/utils.module.css";
 
 export default function Post({ postData }) {
   return (
@@ -19,7 +19,7 @@ export default function Post({ postData }) {
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
     </Layout>
-  )
+  );
 }
 
 export async function getStaticPaths() {
@@ -27,7 +27,7 @@ export async function getStaticPaths() {
   return {
     paths,
     fallback: false,
-  }
+  };
 }
 
 export async function getStaticProps({ params }) {
@@ -35,7 +35,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      postData
+      postData,
     },
   };
 }
