@@ -25,6 +25,26 @@ function App() {
           </nav>
         </div>
       </header>
+      <section>
+        <div>
+          <div>
+            <h1>
+              Hi!
+              <br />
+              I'm RyoCode
+              <br />
+              Web Developer
+            </h1>
+            <p>
+              lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
+            </p>
+            <button>Contact me</button>
+          </div>
+          <div>
+            <img src="./img/icon.jpg" alt="icon" />
+          </div>
+        </div>
+      </section>
     </>
   );
 }
