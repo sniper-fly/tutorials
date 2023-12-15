@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEMO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-['Georgia']">
+
+    <header class="flex justify-center items-center h-32 bg-no-repeat bg-cover bg-center bg-[url('imgs/header.jpg')]">
+            <h1>ヘッダー</h1>
+    </header>
+
+    <main>
+        <h1 class="flex justify-center items-center bg-blue-300">メイン</h1>
+        <div class="sm:flex">
+            <section class="w-full sm:w-1/4 p-2">
+                <h2>LEFT</h2>
+                <ul class="text-xs cursor-pointer">
+                    <li class="hover:text-white hover:bg-blue-500">HOME</li>
+                    <li class="hover:text-white hover:bg-blue-500">CONTACT</li>
+                    <li class="hover:text-white hover:bg-blue-500">ACCESS</li>
+                </ul>
+            </section>
+            <section class="flex flex-wrap w-full p-2 sm:border-t-0 border-t-4 sm:border-l-4 border-slate-200">
+                <section>
+                    <h3>コンテンツ１</h3>
+                    <p>今日の北海道・・・</p>
+                    <img src="imgs/a.jpg" class="w-64">
+                </section>
+                <section>
+                    <h3>コンテンツ２</h3>
+                    <p>今日の沖縄・・・</p>
+                    <img src="imgs/b.jpg" class="w-64">
+                </section>
+                <section>
+                    <h3>コンテンツ３</h3>
+                    <p>今日の青森・・・</p>
+                    <img src="imgs/c.jpg" class="w-64">
+                </section>
+                <section>
+                    <h3>コンテンツ４</h3>
+                    <p>今日の宮崎・・・</p>
+                    <img src="imgs/d.jpg" class="w-64">
+                </section>
+            </section>
+         </div>
+    </main>
+    <footer class="flex justify-center bg-green-300">
+        <small>
+            フッター
+        </small>
+    </footer>
+</body>
+</html>
