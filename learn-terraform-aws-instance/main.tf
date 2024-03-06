@@ -1,4 +1,11 @@
 terraform {
+  cloud {
+    organization = "terraform_tutorial_miroscular"
+    workspaces {
+      name = "tutorial_miroscular"
+    }
+  }
+
   required_providers {
     aws = {
       source  = "hashicorp/aws"
@@ -14,7 +21,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-08d70e59c07c61a3a"
+  ami = "ami-08d70e59c07c61a3a"
 
   instance_type = "t2.micro"
 
