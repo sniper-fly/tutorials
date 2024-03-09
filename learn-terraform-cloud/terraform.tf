@@ -1,5 +1,6 @@
 terraform {
 
+  /*
   cloud {
     organization = "terraform_tutorial_miroscular"
 
@@ -7,6 +8,7 @@ terraform {
       name = "tutorial_miroscular"
     }
   }
+  */
 
   required_providers {
     aws = {
