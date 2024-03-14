@@ -1,5 +1,10 @@
 'use client';
 
+/* you can login with the following credentials
+user@nextmail.com
+123456
+*/
+
 import { lusitana } from '@/app/ui/fonts';
 import {
   AtSymbolIcon,
