@@ -1,8 +1,8 @@
 import NextAuth from 'next-auth';
 import { authConfig } from './auth.config';
 
-import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
+import { NextResponse } from 'next/server';
+import type { NextRequest } from 'next/server';
 
 export default NextAuth(authConfig).auth;
 
@@ -13,10 +13,15 @@ export const config = {
 
 export function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/hoge')) {
-    const url = new URL('/dashboard', request.url)
-    console.log(url.pathname)
-    console.log(request.url)
+    const url = new URL('/dashboard', request.url);
+    console.log(url.pathname);
+    console.log(request.url);
     // return NextResponse.rewrite('http://localhost:3000/dashboard/')
-    return NextResponse.rewrite(url)
+    return NextResponse.rewrite(url);
   }
+
+  console.log(request.cookies.get('fuga'))
+  request.cookies.delete('fuga')
+  console.log(request.cookies.get('fuga'))
+  return NextResponse.next();
 }
