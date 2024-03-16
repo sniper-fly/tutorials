@@ -12,24 +12,19 @@ export const config = {
 };
 
 export function middleware(request: NextRequest) {
-  if (request.nextUrl.pathname.startsWith('/hoge')) {
-    const url = new URL('/dashboard', request.url);
-    console.log(url.pathname);
-    console.log(request.url);
-    // return NextResponse.rewrite('http://localhost:3000/dashboard/')
-    return NextResponse.rewrite(url);
-  }
+  // Clone the request headers and set a new header `x-hello-from-middleware1`
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set('x-hello-from-middleware1', 'hello');
 
-  const response = NextResponse.next()
-  response.cookies.set({
-    name: 'foo',
-    value: 'bar',
-    path: '/dashboard/customers',
-  })
-  return response
+  // You can also set request headers in NextResponse.rewrite
+  const response = NextResponse.next({
+    request: {
+      // New request headers
+      headers: requestHeaders,
+    },
+  });
 
-  // console.log(request.cookies.get('fuga'))
-  // request.cookies.delete('fuga')
-  // console.log(request.cookies.get('fuga'))
-  // return NextResponse.next();
+  // Set a new response header `x-hello-from-middleware2`
+  response.headers.set('x-hello-from-middleware2', 'hello');
+  return response;
 }
