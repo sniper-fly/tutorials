@@ -20,8 +20,16 @@ export function middleware(request: NextRequest) {
     return NextResponse.rewrite(url);
   }
 
-  console.log(request.cookies.get('fuga'))
-  request.cookies.delete('fuga')
-  console.log(request.cookies.get('fuga'))
-  return NextResponse.next();
+  const response = NextResponse.next()
+  response.cookies.set({
+    name: 'foo',
+    value: 'bar',
+    path: '/dashboard/customers',
+  })
+  return response
+
+  // console.log(request.cookies.get('fuga'))
+  // request.cookies.delete('fuga')
+  // console.log(request.cookies.get('fuga'))
+  // return NextResponse.next();
 }
