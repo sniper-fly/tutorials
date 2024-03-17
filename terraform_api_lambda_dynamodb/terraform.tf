@@ -1,10 +1,10 @@
 terraform {
-  cloud {
-    organization = "terraform_tutorial_miroscular"
-    workspaces {
-      name = "learning_with_cli"
-    }
-  }
+  # cloud {
+  #   organization = "terraform_tutorial_miroscular"
+  #   workspaces {
+  #     name = "learning_with_cli"
+  #   }
+  # }
 
   required_providers {
     aws = {
