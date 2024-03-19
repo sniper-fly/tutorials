@@ -56,6 +56,16 @@ resource "aws_iam_role_policy_attachment" "lambda_policy" {
   policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 }
 
+resource "aws_iam_role_policy_attachment" "translate_policy" {
+  role       = aws_iam_role.lambda_exec.name
+  policy_arn = "arn:aws:iam::aws:policy/TranslateFullAccess"
+}
+
+resource "aws_iam_role_policy_attachment" "dynamodb_policy" {
+  role       = aws_iam_role.lambda_exec.name
+  policy_arn = "arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess"
+}
+
 resource "aws_lambda_function" "hello_world" {
   function_name = "HelloWorld"
 
@@ -63,7 +73,7 @@ resource "aws_lambda_function" "hello_world" {
   s3_key    = aws_s3_object.lambda_hello_world.key
 
   runtime = "python3.8"
-  handler = "hello.handler"
+  handler = "hello.lambda_handler"
 
   source_code_hash = data.archive_file.lambda_hello_world.output_base64sha256
   role             = aws_iam_role.lambda_exec.arn
