@@ -48,3 +48,13 @@ resource "aws_api_gateway_integration_response" "example" {
 EOF
   }
 }
+
+resource "aws_api_gateway_deployment" "example" {
+  rest_api_id = aws_api_gateway_rest_api.example.id
+}
+
+resource "aws_api_gateway_stage" "example" {
+  deployment_id = aws_api_gateway_deployment.example.id
+  rest_api_id   = aws_api_gateway_rest_api.example.id
+  stage_name    = "test"
+}
