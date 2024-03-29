@@ -16,6 +16,12 @@ resource "aws_apigatewayv2_route" "hello_world" {
   target    = "integrations/${aws_apigatewayv2_integration.example.id}"
 }
 
+resource "aws_apigatewayv2_route" "hoge" {
+  api_id = aws_apigatewayv2_api.lambda.id
+
+  route_key = "GET /hoge"
+}
+
 resource "aws_apigatewayv2_stage" "lambda" {
   api_id = aws_apigatewayv2_api.lambda.id
 
