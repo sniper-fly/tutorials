@@ -19,7 +19,7 @@ resource "aws_apigatewayv2_route" "hello_world" {
 resource "aws_apigatewayv2_route" "hoge" {
   api_id = aws_apigatewayv2_api.lambda.id
 
-  route_key = "GET /hoge"
+  route_key = "GET /hoge/fuga"
 }
 
 resource "aws_apigatewayv2_stage" "lambda" {
