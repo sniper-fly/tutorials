@@ -18,5 +18,6 @@ resource "aws_dynamodb_table_item" "example" {
   item = jsonencode({
     timestamp: { S: "20191024183000" }
     input_text: { S: "こんにちは" }
+    output_text: { S: "Hello" }
   })
 }
