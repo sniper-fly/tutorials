@@ -10,3 +10,10 @@ resource "aws_s3_bucket_public_access_block" "anitunes_click" {
   ignore_public_acls      = false
   restrict_public_buckets = false
 }
+
+resource "aws_s3_bucket_website_configuration" "anitunes_click" {
+  bucket = aws_s3_bucket.anitunes_click.id
+  index_document {
+    suffix = "index.html"
+  }
+}
