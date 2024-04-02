@@ -17,3 +17,20 @@ resource "aws_s3_bucket_website_configuration" "anitunes_click" {
     suffix = "index.html"
   }
 }
+
+resource "aws_s3_bucket_policy" "anitunes_click" {
+  bucket = aws_s3_bucket.anitunes_click.id
+
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Sid       = "PublicReadGetObject",
+        Effect    = "Allow"
+        Principal = "*"
+        Action    = "s3:GetObject"
+        Resource  = "arn:aws:s3:::anitunes.click/*"
+      },
+    ]
+  })
+}
