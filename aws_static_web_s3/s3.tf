@@ -34,3 +34,12 @@ resource "aws_s3_bucket_policy" "anitunes_click" {
     ]
   })
 }
+
+resource "aws_s3_object" "index" {
+  bucket = aws_s3_bucket.anitunes_click.id
+  key    = "index.html"
+  source = "resources/index.html"
+
+  content_type = "text/html"
+  etag = filemd5("resources/index.html")
+}
