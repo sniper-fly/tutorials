@@ -35,13 +35,25 @@ resource "aws_s3_bucket_policy" "anitunes_click" {
   })
 }
 
+locals {
+  content_types = {
+    "js"   = "application/javascript"
+    "html" = "text/html"
+    "css"  = "text/css"
+    "png"  = "image/png"
+    "ico"  = "image/x-icon"
+  }
+}
+
 resource "aws_s3_object" "resources" {
   bucket = aws_s3_bucket.anitunes_click.id
 
   for_each = fileset("./resources/", "**")
 
-  key    = "${each.value}"
+  key    = each.value
   source = "resources/${each.value}"
+
+  content_type = lookup(local.content_types, reverse(split(".", each.value))[0], "text/plain")
 
   etag = filemd5("resources/${each.value}")
 }

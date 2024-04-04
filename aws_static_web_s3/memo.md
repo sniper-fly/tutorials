@@ -1,4 +1,4 @@
-https://s3.ap-northeast-1.amazonaws.com/anitunes.click/index.html
+http://anitunes.click.s3-website-ap-northeast-1.amazonaws.com/
 こちらでアクセス可能
 
 sample bucket policy
