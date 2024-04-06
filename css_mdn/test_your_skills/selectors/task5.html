@@ -2,8 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Selectors: Pseudo-class and Pseudo-element Selectors</title>
-    <link rel="stylesheet" href="../styles.css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Selectors: attribute selectors</title>
+
     <style>
       body {
         background-color: #fff;
@@ -12,61 +13,42 @@
         padding: 1em;
         margin: 0;
       }
-      * {
-        box-sizing: border-box;
+
+      ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
       }
 
-      table {
-        border-collapse: collapse;
-        width: 300px;
+      li {
+        margin: 0 0 0.5em;
       }
 
-      td,
-      th {
-        padding: 0.2em;
-        text-align: left;
+      a {
+        display: block;
+        padding: 0.5em;
+      }
+
+      a {
+        border: 5px solid grey;
       }
     </style>
   </head>
 
   <body>
-    <div class="container">
-      <p>
-        Veggies es <a href="https://example.com">bonus vobis</a>, proinde vos
-        postulo essum magis kohlrabi welsh onion daikon amaranth tatsoi
-        tomatillo melon azuki bean garlic.
-      </p>
-      <p>
-        Gumbo beet greens corn soko endive gumbo gourd. Parsley shallot
-        courgette tatsoi pea sprouts fava bean collard greens dandelion okra
-        wakame tomato. Dandelion cucumber earthnut pea peanut soko zucchini.
-      </p>
-      <table>
-        <tr>
-          <th>Fruits</th>
-          <th>Vegetables</th>
-        </tr>
-        <tr>
-          <td>Apple</td>
-          <td>Potato</td>
-        </tr>
-        <tr>
-          <td>Orange</td>
-          <td>Carrot</td>
-        </tr>
-        <tr>
-          <td>Tomato</td>
-          <td>Parsnip</td>
-        </tr>
-        <tr>
-          <td>Kiwi</td>
-          <td>Onion</td>
-        </tr>
-        <tr>
-          <td>Banana</td>
-          <td>Beet</td>
-        </tr>
-      </table>
-    </div>
+    <ul>
+      <li>
+        <a href="https://example.com">Link 1</a>
+      </li>
+      <li>
+        <a href="https://example.com" title="Visit example.com">Link 2</a>
+      </li>
+      <li>
+        <a href="/contact">Link 3</a>
+      </li>
+      <li>
+        <a href="../contact/index.html">Link 4</a>
+      </li>
+    </ul>
   </body>
 </html>
