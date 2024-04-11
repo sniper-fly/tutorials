@@ -11,6 +11,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     domain_name = aws_s3_bucket.anitunes_click.bucket_regional_domain_name
     origin_id   = local.s3_origin_id
   }
+  aliases = ["anitunes.click"]
 
   enabled             = true
   default_root_object = "index.html"
@@ -22,7 +23,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
     cache_policy_id = data.aws_cloudfront_cache_policy.caching_optimized.id
 
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
   }
 
   restrictions {
@@ -33,6 +34,8 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn = aws_acm_certificate.cert.arn
+    ssl_support_method = "sni-only"
+    minimum_protocol_version = "TLSv1.2_2021"
   }
 }
