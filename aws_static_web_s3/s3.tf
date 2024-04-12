@@ -18,27 +18,6 @@ resource "aws_s3_bucket_website_configuration" "anitunes_click" {
   }
 }
 
-# {
-#         "Version": "2008-10-17",
-#         "Id": "PolicyForCloudFrontPrivateContent",
-#         "Statement": [
-#             {
-#                 "Sid": "AllowCloudFrontServicePrincipal",
-#                 "Effect": "Allow",
-#                 "Principal": {
-#                     "Service": "cloudfront.amazonaws.com"
-#                 },
-#                 "Action": "s3:GetObject",
-#                 "Resource": "arn:aws:s3:::anitunes.click/*",
-#                 "Condition": {
-#                     "StringEquals": {
-#                       "AWS:SourceArn": "arn:aws:cloudfront::109026126473:distribution/E7GTKCI7VVKNQ"
-#                     }
-#                 }
-#             }
-#         ]
-#       }
-
 resource "aws_s3_bucket_policy" "anitunes_click" {
   bucket = aws_s3_bucket.anitunes_click.id
 
@@ -52,7 +31,6 @@ data "aws_iam_policy_document" "s3_anitunes_click" {
     principals {
       type        = "Service"
       identifiers = ["cloudfront.amazonaws.com"]
-      # identifiers = ["arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E7GTKCI7VVKNQ"]
     }
   }
 }

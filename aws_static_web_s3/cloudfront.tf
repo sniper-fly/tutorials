@@ -10,10 +10,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
     domain_name = aws_s3_bucket.anitunes_click.bucket_regional_domain_name
     origin_id   = local.s3_origin_id
-
-    # restrict bucket access
-    # origin access identity yes
-    # grant read pearmissions on bucket
+    origin_access_control_id = aws_cloudfront_origin_access_control.anitunes_click.id
   }
   aliases = ["anitunes.click"]
 
@@ -42,4 +39,11 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     ssl_support_method = "sni-only"
     minimum_protocol_version = "TLSv1.2_2021"
   }
+}
+
+resource "aws_cloudfront_origin_access_control" "anitunes_click" {
+  name                              = "cf-oac-with-tf"
+  origin_access_control_origin_type = "s3"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
 }
