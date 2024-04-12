@@ -5,10 +5,10 @@ resource "aws_s3_bucket" "anitunes_click" {
 resource "aws_s3_bucket_public_access_block" "anitunes_click" {
   bucket = aws_s3_bucket.anitunes_click.id
 
-  block_public_acls       = false
-  block_public_policy     = false
-  ignore_public_acls      = false
-  restrict_public_buckets = false
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
 
 resource "aws_s3_bucket_website_configuration" "anitunes_click" {
@@ -18,21 +18,43 @@ resource "aws_s3_bucket_website_configuration" "anitunes_click" {
   }
 }
 
+# {
+#         "Version": "2008-10-17",
+#         "Id": "PolicyForCloudFrontPrivateContent",
+#         "Statement": [
+#             {
+#                 "Sid": "AllowCloudFrontServicePrincipal",
+#                 "Effect": "Allow",
+#                 "Principal": {
+#                     "Service": "cloudfront.amazonaws.com"
+#                 },
+#                 "Action": "s3:GetObject",
+#                 "Resource": "arn:aws:s3:::anitunes.click/*",
+#                 "Condition": {
+#                     "StringEquals": {
+#                       "AWS:SourceArn": "arn:aws:cloudfront::109026126473:distribution/E7GTKCI7VVKNQ"
+#                     }
+#                 }
+#             }
+#         ]
+#       }
+
 resource "aws_s3_bucket_policy" "anitunes_click" {
   bucket = aws_s3_bucket.anitunes_click.id
 
-  policy = jsonencode({
-    Version = "2012-10-17"
-    Statement = [
-      {
-        Sid       = "PublicReadGetObject",
-        Effect    = "Allow"
-        Principal = "*"
-        Action    = "s3:GetObject"
-        Resource  = "arn:aws:s3:::anitunes.click/*"
-      },
-    ]
-  })
+  policy = data.aws_iam_policy_document.s3_anitunes_click.json
+}
+
+data "aws_iam_policy_document" "s3_anitunes_click" {
+  statement {
+    actions   = ["s3:GetObject"]
+    resources = ["${aws_s3_bucket.anitunes_click.arn}/*"]
+    principals {
+      type        = "Service"
+      identifiers = ["cloudfront.amazonaws.com"]
+      # identifiers = ["arn:aws:iam::cloudfront:user/CloudFront Origin Access Identity E7GTKCI7VVKNQ"]
+    }
+  }
 }
 
 locals {

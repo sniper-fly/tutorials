@@ -10,6 +10,10 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   origin {
     domain_name = aws_s3_bucket.anitunes_click.bucket_regional_domain_name
     origin_id   = local.s3_origin_id
+
+    # restrict bucket access
+    # origin access identity yes
+    # grant read pearmissions on bucket
   }
   aliases = ["anitunes.click"]
 
