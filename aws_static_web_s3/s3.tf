@@ -32,6 +32,11 @@ data "aws_iam_policy_document" "s3_anitunes_click" {
       type        = "Service"
       identifiers = ["cloudfront.amazonaws.com"]
     }
+    condition {
+      test = "StringEquals"
+      variable = "AWS:SourceArn"
+      values = [aws_cloudfront_distribution.s3_distribution.arn]
+    }
   }
 }
 
