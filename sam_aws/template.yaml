@@ -11,3 +11,5 @@ Resources:
       Runtime: python3.12
       Timeout: 5
       MemorySize: 256
+      Policies:
+        - TranslateFullAccess
