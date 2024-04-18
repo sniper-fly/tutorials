@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: AWS Hands-on for Beginners - Serverless 2
 Resources:
-  TranslateLambda:
+  TranslateLambda: # 識別名。自分で決めて良い
     Type: AWS::Serverless::Function
     Properties:
       FunctionName: translate-function-2
@@ -13,3 +13,18 @@ Resources:
       MemorySize: 256
       Policies:
         - TranslateFullAccess
+      Events:
+        GetApi: # 識別名。自分で決めて良い
+          Type: Api
+          Properties:
+            Method: get
+            Path: /translate
+            RestApiId:
+              Ref: TranslateApi
+  TranslateApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      Name: translate-api-2
+      StageName: dev
+      EndpointConfiguration:
+        Type: REGIONAL
