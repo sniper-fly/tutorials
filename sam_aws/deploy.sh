@@ -5,6 +5,8 @@ aws cloudformation package \
   --s3-bucket hands-on-serverless-rnakai \
   --output-template-file packaged-template.yaml
 
+echo ========================================
+
 aws cloudformation deploy \
   --template-file ./packaged-template.yaml \
   --stack-name hands-on-serverless-2 \

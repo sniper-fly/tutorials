@@ -13,6 +13,7 @@ Resources:
       MemorySize: 256
       Policies:
         - TranslateFullAccess
+        - AmazonDynamoDBFullAccess
       Events:
         GetApi: # 識別名。自分で決めて良い
           Type: Api
@@ -28,3 +29,13 @@ Resources:
       StageName: dev
       EndpointConfiguration:
         Type: REGIONAL
+  TranslateDynamoDbTbl:
+    Type: AWS::Serverless::SimpleTable
+    Properties:
+      TableName: translate-history
+      PrimaryKey:
+        Name: timestamp
+        Type: String
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1
