@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <style>
+      #container {
+        display: grid;
+        grid-template-rows: 100px 50px;
+        grid-template-columns: 150px 1fr;
+      }
+
+      #itemA {
+        grid-row: 1 / span 2;
+        grid-column: 1;
+        background: pink;
+      }
+
+      #itemB {
+        grid-row: 1;
+        grid-column: 2;
+        background: greenyellow;
+      }
+
+      #itemC {
+        grid-row: 2;
+        grid-column: 2;
+        background: skyblue;
+      }
+
+      #container {
+        display: grid;
+        grid-template-rows: 100px 50px;
+        grid-template-columns: 150px 1fr;
+        grid-template-areas:
+          "itemA itemC"
+          "itemA itemB";
+      }
+
+      #itemA {
+        grid-area: itemA;
+      }
+
+      #itemB {
+        grid-area: itemB;
+      }
+
+      #itemC {
+        grid-area: itemC;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <div id="itemA">A</div>
+      <div id="itemB">B</div>
+      <div id="itemC">C</div>
+    </div>
+  </body>
+</html>
