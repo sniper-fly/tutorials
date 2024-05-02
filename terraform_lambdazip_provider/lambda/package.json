@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "esbuild index.ts --bundle --minify --sourcemap --platform=node --target=es2020 --outfile=dist/index.js"
+    "build": "rm -rf dist && esbuild ./src/* --entry-names=[dir]/[name]/index --bundle --minify --sourcemap --platform=node --target=node16.14 --outdir=dist"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.8"
+  },
+  "devDependencies": {
+    "esbuild": "^0.20.2"
   }
 }
