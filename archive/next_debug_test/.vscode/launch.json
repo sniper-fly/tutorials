@@ -18,19 +18,5 @@
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}/next-app/"
     },
-    // {
-    //   "name": "Next.js: debug full stack",
-    //   "type": "node-terminal",
-    //   "request": "launch",
-    //   "command": "make up",
-    //   "localRoot": "${workspaceFolder}/next-app/",
-    //   "remoteRoot": "/app/",
-    //   "sourceMaps": true,
-    //   "serverReadyAction": {
-    //     "pattern": "started server on .+, url: (https?://.+)",
-    //     "uriFormat": "%s",
-    //     "action": "debugWithChrome"
-    //   }
-    // }
   ]
 }
