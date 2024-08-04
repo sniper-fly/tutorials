@@ -1,12 +1,12 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
-import App from './App';
+import App from "./App";
 
-describe('renders App component', () => {
-  it('renders App component', () => {
+describe("renders App component", () => {
+  it("renders App component", () => {
     render(<App />);
 
-    screen.debug();
+    expect(screen.getByText("Search:")).toBeInTheDocument(); // Update this line
   });
 });
