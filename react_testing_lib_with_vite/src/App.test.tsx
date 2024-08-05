@@ -7,6 +7,6 @@ describe("renders App component", () => {
   it("renders App component", () => {
     render(<App />);
 
-    expect(screen.getByText("Search:")).toBeInTheDocument(); // Update this line
+    expect(screen.getByRole('textbox')).toBeInTheDocument();
   });
 });
